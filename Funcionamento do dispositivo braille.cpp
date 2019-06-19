@@ -2,18 +2,18 @@
 #include<wiringPi.h>
 #include"banco_letras2.h"
 
-int main(){
-	
-	
-	int checar_botao;
-	int checar_pinos;
-	int checar_letra;
-	int executar_audio;
+int main(int argc, char const *argv[])
+{
+	inicializar();
+	executar();
+	return 0;
 }
 
-int incializar(){
+void incializar()
+{
 	wiringPiSetup();
 	
+	//puxa banca de dados
 	inicializa_letras();
 	file_write();
 	
@@ -45,44 +45,59 @@ int incializar(){
 	int botao7;
 	pinMode(7, INPUT)
 	pullUpDnControl(7, PUD_UP)
+}
+
+int checarbotao(int botao)
+{
+	if (digitalRead(botao) == LOW)
+		return 1;
+	else 
+		return 0;
 	
+}
+
+void checarpinos(int checkpinos[])
+{
+	checarbotao(1) = checkpinos [1];
+	checarbotao(2) = checkpinos [2];
+	checarbotao(3) = checkpinos [3];
+	checarbotao(4) = checkpinos [4];
+	checarbotao(5) = checkpinos [5];
+	checarbotao(6) = checkpinos [6];
+}
+
+char checarletra(int checkpinos[], int letras[])
+{
+	int res;
+	for(int i=0;i<40;++i){
+		res=1;
+		for(int j=0;j<7;++j){ // talvez tenha que mudar j p/ 1
+			if(res && letras[i].pino[i]!= checkpinos[j])
+				res=0;
+		}
+		if(res)return letras[i].letra;
+	}		
+}
+
+void Audio ()
+{
+	
+	system(omx application"arquivo.mp3"); //vai pro terminal e volta em áudio
+}
+	
+int executar()
+{
+	int checkpinos[7];
 	//ativando todos os pinos, somente enquanto o botão estiver sendo pressionado!
-	while(1){
+	while (1){
 		if(digitalRead(7) == LOW);{
-		botao1 = !botao1;
-			digitalWrite(1, botao1);
-			if(botao1 == 1) printf("Botao pressionado\n");
-			if(botao1 == 0) printf("Botao desativado\n");
-		pino1 = !pino1;
-		pino2 = !pino2;
-		pino3 = !pino3;
-		pino4 = !pino4;
-		pino5 = !pino5;
-		pino6 = !pino6;
-		while(digitalRead(7) == LOW);
-		
+			checarpinos(checkpinos);
+			checarletra(checkpinos, letras);
+			executaraudio();
+			
 		}
 	}
 }
-
-int checar_pinos(){
-	//(A) desligando todos os pinos menos o 1
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
-
-
 
 
 
