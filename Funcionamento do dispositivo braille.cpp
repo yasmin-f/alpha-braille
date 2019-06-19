@@ -1,7 +1,9 @@
 #include<stdio.h>
 #include<wiringPi.h>
+#include"banco_letras2.h"
 
 int main(){
+	
 	
 	int checar_botao;
 	int checar_pinos;
@@ -9,44 +11,40 @@ int main(){
 	int executar_audio;
 }
 
-int checar_botao(){
+int incializar(){
 	wiringPiSetup();
-	pinMode(1, OUTPUT);
-	pinMode(7, INPUT);
-	pullUpDnControl(7, PUD_UP);
 	
-	int botao1=0; //botão 7 desativado ----->ver qual correspondente WiringPi
+	inicializa_letras();
+	file_write();
 	
 	//configurando entrada e saída pinos
 	int pino1=0;
-	pinMode(1, OUTPUT);
-	pinMode(7, INPUT);
-	pullUpDnControl(7, PUD_UP);
-	
-	int pino2=0;
-	pinMode(2, OUTPUT);
-	pinMode(0, INPUT);
-	pullUpDnControl(0, PUD_UP);
-	
-	int pino3=0;
-	pinMode(3, OUTPUT);
 	pinMode(1, INPUT);
 	pullUpDnControl(1, PUD_UP);
 	
-	int pino4=0;
-	pinMode(4, OUTPUT);
+	int pino2=0;
 	pinMode(2, INPUT);
 	pullUpDnControl(2, PUD_UP);
 	
-	int pino5=0;
-	pinMode(5, OUTPUT);
+	int pino3=0;
 	pinMode(3, INPUT);
 	pullUpDnControl(3, PUD_UP);
 	
-	int pino6=0;
-	pinMode(6, OUTPUT);
+	int pino4=0;
 	pinMode(4, INPUT);
 	pullUpDnControl(4, PUD_UP);
+	
+	int pino5=0;
+	pinMode(5, INPUT);
+	pullUpDnControl(5, PUD_UP);
+	
+	int pino6=0;
+	pinMode(6, INPUT);
+	pullUpDnControl(6, PUD_UP);
+	
+	int botao7;
+	pinMode(7, INPUT)
+	pullUpDnControl(7, PUD_UP)
 	
 	//ativando todos os pinos, somente enquanto o botão estiver sendo pressionado!
 	while(1){
