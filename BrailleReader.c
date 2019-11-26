@@ -3,10 +3,16 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <string.h>
+#include <time.h>
 #include "banco_letras.h"
 
-void inicializar()
+#define MAXP 7
+
+int const MainButton = 7;
+
+void inicializar ()
 {
+    int i;
     wiringPiSetup();
     
     //puxa banca de dados
@@ -14,22 +20,19 @@ void inicializar()
     file_write();
     
     //configurando entrada e saida pinos
-    
     for (i = 1; i <= 7; i++) {
         pinMode(i, INPUT);
         pullUpDnControl(i, PUD_UP);
     }
 }
 
-int checarbotao(int botao)
+int checarbotao (int botao)
 {
-    if (digitalRead(botao) == LOW)
-        return 1;
-    else 
-        return 0; 
+    if (digitalRead (botao) == LOW) return 1;
+    else return 0; 
 }
 
-void checarpinos(int checkpinos[])
+void checarpinos (int checkpinos[])
 {
     int i;
     for (i = 1; i <= 6; i++)
@@ -57,33 +60,80 @@ void ExecutarAudio (char ret)
     strcpy(letra_ret,"");
 }
     
-void ModoLivre()
+void ModoLivre ()
 {
-    int checkpinos[7] = {0}, j; //{0,1,0,0,0,0,0}
+    int i, checkpinos[MAXP] = {0}; //{0,1,0,0,0,0,0}
     char ret = ' ';
-    //ativa todos os pinos, somente enquanto o bot�o principal estiver sendo pressionado
+
+    //ativa todos os pinos, somente enquanto o botao principal estiver sendo pressionado
     while (TRUE) {
-        if(digitalRead(7) == LOW) {
-            checarpinos(checkpinos);
+        if(digitalRead (MainButton) == LOW) {
+            checarpinos (checkpinos);
             
-            ret = buscaLetra(checkpinos);
-            for(j = 1; j <= 6; j++)
-                printf("pino %d: %d\n", j, checkpinos[j]);
-            if(!ret)
-                printf("\n\nErro ao buscar letra na biblioteca!!\n\n");
+            ret = buscaLetra (checkpinos);
+            for (i = 1; i <= 6; i++)
+                printf ("pino %d: %d\n", i, checkpinos[i]);
+            if (!ret)
+                printf ("\n\nErro ao buscar letra na biblioteca!!\n\n");
             else {
-                printf("\nLetra encontrada: %c\n\n", ret);
-                ExecutarAudio(ret);
+                printf ("\nLetra encontrada: %c\n\n", ret);
+                ExecutarAudio (ret);
             }
             delay(300);         
         }
     }
 }
 
+
+void ModoAtividade()
+{
+    int i, checkpinos[MAXP] = {0}; //{0,1,0,0,0,0,0}
+    char randletra, ret = ' ';
+
+    //Randomiza letra
+    randletra = rand() % 26 + 97;
+    printf("\nColoque os pinos correspondentes a letra: %c\n\n", randletra);
+    ExecutarAudio(randletra);
+    delay(300);
+
+    //ativa todos os pinos, somente enquanto o botao principal estiver sendo pressionado
+    while (TRUE)
+    {
+        if (digitalRead(MainButton) == LOW)
+        {
+            checarpinos(checkpinos);
+            ret = buscaLetra(checkpinos);
+            for (i = 1; i <= 6; i++)
+                printf("pino %d: %d\n", i, checkpinos[i]);
+            if (randletra == ret)
+            {
+                printf("\nLetra encontrada: %c\n", ret);
+                printf("Voce acertou\n\n");
+                ExecutarAudio(ret);
+                delay(1000);
+            }
+            else
+                printf("\nLetra encontrada: %c\n", ret);
+                printf("Voce errou a letra!!\n\n");
+
+            randletra = rand() % 26 + 97;
+            printf("\nColoque os pinos correspondentes a letra: %c\n\n", randletra);
+            ExecutarAudio(randletra);
+            delay(300);
+        }
+    }
+}
+
 int main()
 {
-    inicializar();
-    ModoLivre ();
+    int checkpinos [MAXP];
+
+    srand (time(NULL));
+
+    inicializar ();
+    ModoLivre (checkpinos);
+    ModoAtividade (checkpinos);
+    
     return 0;
 }
 

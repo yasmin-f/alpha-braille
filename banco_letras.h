@@ -7,28 +7,24 @@
 // Estrutura de dados
 //struct
 
-struct letra
-{
+typedef struct {
    int pino[7];
    char letra;
 } letra[40];
 
-struct l
-{
+typedef struct {
    int pino[7];
    char letra;
 } l[40];
 
 void inicializa_struct(){
     int i,j;
-    for(i=0;i<=40;i++){
+    for(i = 0;i <= 40; i++){
         for(j=0;j<=7;j++)
             letra[i].pino[j] = 0;
         letra[i].letra = ' ';
     }
 }
-
-
 
 void inicializa_letras(){
     setlocale(LC_ALL, "");
@@ -38,99 +34,99 @@ void inicializa_letras(){
     /* pino1-1 pino-2 ...
     letra-' '*/
 
-    //a
+    //a {0,1,0,0,0,0,0}
     letra[1].pino[1]=1;
-    letra[1].letra='a';
+    letra[1].letra = 'a';
 
-    //b
+    //b {0,1,2,0,0,0,0}
     letra[2].pino[1]=1;
     letra[2].pino[2]=1;
     letra[2].letra='b';
 
-    //c
+    //c {0,1,0,0,1,0,0}
     letra[3].pino[1]=1;
     letra[3].pino[4]=1;
     letra[3].letra='c';
 
-    //d
+    //d {0,1,0,0,1,1,0}
     letra[4].pino[1]=1;
     letra[4].pino[4]=1;
     letra[4].pino[5]=1;
     letra[4].letra='d';
 
-    //e
+    //e {0,1,0,0,0,1,0}
     letra[5].pino[1]=1;
     letra[5].pino[5]=1;
     letra[5].letra='e';
 
-    //f
+    //f {0,1,1,0,1,0,0}
     letra[6].pino[1]=1;
     letra[6].pino[2]=1;
     letra[6].pino[4]=1;
     letra[6].letra='f';
 
-    //g
+    //g {0,1,1,0,1,1,0}
     letra[7].pino[1]=1;
     letra[7].pino[2]=1;
     letra[7].pino[4]=1;
     letra[7].pino[5]=1;
     letra[7].letra='g';
 
-    //h
+    //h {0,1,1,0,0,5,0}
     letra[8].pino[1]=1;
     letra[8].pino[2]=1;
     letra[8].pino[5]=1;
     letra[8].letra='h';
 
-    //i
+    //i {0,0,1,0,1,0,0}
     letra[9].pino[2]=1;
     letra[9].pino[4]=1;
     letra[9].letra='i';
 
-    //j
+    //j {0,0,1,0,1,1,0}
     letra[10].pino[2]=1;
     letra[10].pino[4]=1;
     letra[10].pino[5]=1;
     letra[10].letra='j';
 
-    //k
+    //k {0,1,0,1,0,0,0}
     letra[11].pino[1]=1;
     letra[11].pino[3]=1;
     letra[11].letra='k';
 
-    //l
+    //l {0,1,1,1,0,0,0}
     letra[12].pino[1]=1;
     letra[12].pino[2]=1;
     letra[12].pino[3]=1;
     letra[12].letra='l';
 
-    //m
+    //m {0,1,0,1,1,0,0}
     letra[13].pino[1]=1;
     letra[13].pino[3]=1;
     letra[13].pino[4]=1;
     letra[13].letra='m';
 
-    //n
+    //n {0,1,0,1,1,1,0}
     letra[14].pino[1]=1;
     letra[14].pino[3]=1;
     letra[14].pino[4]=1;
     letra[14].pino[5]=1;
     letra[14].letra='n';
 
-    //o
+    //o {0,1,0,1,0,1,0}
     letra[15].pino[1]=1;
     letra[15].pino[3]=1;
     letra[15].pino[5]=1;
     letra[15].letra='o';
 
-    //p
+    //p {0,1,1,1,1,0,0}
     letra[16].pino[1]=1;
     letra[16].pino[2]=1;
     letra[16].pino[3]=1;
     letra[16].pino[4]=1;
     letra[16].letra='p';
 
-    //q
+    //q {0,1,1,1,1,1,0}
     letra[17].pino[1]=1;
     letra[17].pino[2]=1;
     letra[17].pino[3]=1;
@@ -138,54 +134,54 @@ void inicializa_letras(){
     letra[17].pino[5]=1;
     letra[17].letra='q';
 
-    //r
+    //r {0,1,1,1,0,1,0}  
     letra[18].pino[1]=1;
     letra[18].pino[2]=1;
     letra[18].pino[3]=1;
     letra[18].pino[5]=1;
     letra[18].letra='r';
 
-    //s
+    //s {0,0,1,1,1,0,0}
     letra[19].pino[2]=1;
     letra[19].pino[3]=1;
     letra[19].pino[4]=1;
     letra[19].letra='s';
 
-    //t
+    //t {0,0,1,1,1,1,0}
     letra[20].pino[2]=1;
     letra[20].pino[3]=1;
     letra[20].pino[4]=1;
     letra[20].pino[5]=1;
     letra[20].letra='t';
 
-    //u
+    //u {0,1,0,1,0,0,1}
     letra[21].pino[1]=1;
     letra[21].pino[3]=1;
     letra[21].pino[6]=1;
     letra[21].letra='u';
 
-    //v
+    //v {0,1,1,1,0,0,1}
     letra[22].pino[1]=1;
     letra[22].pino[2]=1;
     letra[22].pino[3]=1;
     letra[22].pino[6]=1;
     letra[22].letra='v';
 
-    //w
+    //w {0,0,1,0,1,1,1}
     letra[23].pino[2]=1;
     letra[23].pino[4]=1;
     letra[23].pino[5]=1;
     letra[23].pino[6]=1;
     letra[23].letra='w';
 
-    //x
+    //x {0,1,0,1,1,0,1}
     letra[24].pino[1]=1;
     letra[24].pino[3]=1;
     letra[24].pino[4]=1;
     letra[24].pino[6]=1;
     letra[24].letra='x';
 
-    //y
+    //y {0,1,0,1,1,1,1}
     letra[25].pino[1]=1;
     letra[25].pino[3]=1;
     letra[25].pino[4]=1;
@@ -193,108 +189,108 @@ void inicializa_letras(){
     letra[25].pino[6]=1;
     letra[25].letra='y';
 
-    //z
+    //z {0,1,0,1,0,1,0}
     letra[26].pino[1]=1;
     letra[26].pino[3]=1;
     letra[26].pino[5]=1;
     letra[26].pino[6]=1;
     letra[26].letra='z';
 
-    //ç
+    //ï¿½
     letra[27].pino[1]=1;
     letra[27].pino[2]=1;
     letra[27].pino[3]=1;
     letra[27].pino[4]=1;
     letra[27].pino[6]=1;
-    letra[27].letra='ç';
+    letra[27].letra='ï¿½';
 
-    //á
+    //ï¿½
     letra[28].pino[1]=1;
     letra[28].pino[2]=1;
     letra[28].pino[3]=1;
     letra[28].pino[5]=1;
     letra[28].pino[6]=1;
-    letra[28].letra='á';
+    letra[28].letra='ï¿½';
 
-    //â
+    //ï¿½
     letra[29].pino[1]=1;
     letra[29].pino[6]=1;
-    letra[29].letra='â';
+    letra[29].letra='ï¿½';
 
-    //à
+    //ï¿½
     letra[30].pino[1]=1;
     letra[30].pino[2]=1;
     letra[30].pino[4]=1;
     letra[30].pino[6]=1;
-    letra[30].letra='à';
+    letra[30].letra='ï¿½';
 
-    //ã
+    //ï¿½
     letra[31].pino[3]=1;
     letra[31].pino[4]=1;
     letra[31].pino[5]=1;
-    letra[31].letra='ã';
+    letra[31].letra='ï¿½';
 
-    //é
+    //ï¿½
     letra[32].pino[1]=1;
     letra[32].pino[2]=1;
     letra[32].pino[3]=1;
     letra[32].pino[4]=1;
     letra[32].pino[5]=1;
     letra[32].pino[6]=1;
-    letra[32].letra='é';
+    letra[32].letra='ï¿½';
 
-    //ê
+    //ï¿½
     letra[33].pino[1]=1;
     letra[33].pino[2]=1;
     letra[33].pino[6]=1;
-    letra[33].letra='ê';
+    letra[33].letra='ï¿½';
 
-    //í
+    //ï¿½
     letra[34].pino[3]=1;
     letra[34].pino[4]=1;
-    letra[34].letra='í';
+    letra[34].letra='ï¿½';
 
-    //ï
+    //ï¿½
     letra[35].pino[1]=1;
     letra[35].pino[2]=1;
     letra[35].pino[4]=1;
     letra[35].pino[5]=1;
     letra[35].pino[6]=1;
-    letra[35].letra='ï';
+    letra[35].letra='ï¿½';
 
-    //õ
+    //ï¿½
     letra[36].pino[2]=1;
     letra[36].pino[4]=1;
     letra[36].pino[6]=1;
-    letra[36].letra='õ';
+    letra[36].letra='ï¿½';
 
-    //ó
+    //ï¿½
     letra[37].pino[3]=1;
     letra[37].pino[4]=1;
     letra[37].pino[6]=1;
-    letra[37].letra='ó';
+    letra[37].letra='ï¿½';
 
-    //ô
+    //ï¿½
     letra[38].pino[1]=1;
     letra[38].pino[4]=1;
     letra[38].pino[5]=1;
     letra[38].pino[6]=1;
-    letra[38].letra='ô';
+    letra[38].letra='ï¿½';
 
-    //ú
+    //ï¿½
     letra[39].pino[2]=1;
     letra[39].pino[3]=1;
     letra[39].pino[4]=1;
     letra[39].pino[5]=1;
     letra[39].pino[6]=1;
-    letra[39].letra='ú';
+    letra[39].letra='ï¿½';
 
-    //ü
+    //ï¿½
     letra[40].pino[1]=1;
     letra[40].pino[2]=1;
     letra[40].pino[5]=1;
     letra[40].pino[6]=1;
-    letra[40].letra='ü';
+    letra[40].letra='ï¿½';
 
 }
 void file_write(){
@@ -303,7 +299,7 @@ void file_write(){
     int gravado; FILE *arquivo;
     arquivo = fopen("alfabeto.txt","wb");//wb - arquibo binario
     if (arquivo == NULL){
-        printf("\nArquivo alfabeto.txt não pode ser aberto.\n");
+        printf("\nArquivo alfabeto.txt nï¿½o pode ser aberto.\n");
         system("PAUSE");
     }else{
         gravado = fwrite (&letra, sizeof(struct letra), 40, arquivo);
@@ -324,8 +320,8 @@ void file_read(){
         system("PAUSE");
     }else{
 
-        //verificar se está pegando do arquivo binario
-        // l é outra struct que vai receber minha estrutura gravada no arquivo e implimila
+        //verificar se estï¿½ pegando do arquivo binario
+        // l ï¿½ outra struct que vai receber minha estrutura gravada no arquivo e implimila
         // antes l era &letra
         fread(&l, sizeof(struct letra), 40, arquivo);
         int x,j;
@@ -341,27 +337,25 @@ void file_read(){
 }
 
 char buscaLetra(int checkpinos[]){
-    int res, i=1,j=1;
-    char retorno=NULL;
+    int res, i = 1,j = 1;
+    char retorno = NULL;
 
     // i - contador para letras
-	for(i=1;i<=40;i++){
+	for(i = 1; i <= 40; i++){
 		//printf("\n\n\nLetra: %c\n\n",letra[i].letra);
 		res=0;
-        j=0;
+        j=1;
 
         // j - contador para os pinos das letras
-        while(j<=6){
-
+        while(j <= 6){
 
             if(checkpinos[j] == letra[i].pino[j])
                 res=1;
             else break; // se ele nao for igual ja saio da repeticao de pinos (j)
 
-
             // se o j estiver na ultima posicao e o res==1 retorno a letra
             // senao so continuo a contagem para proxima letra
-            if(j==6 && res)
+            if(j == 6 && res)
                 return retorno = letra[i].letra;
 
             j++;
@@ -379,8 +373,8 @@ char busca_letra_file_bin(int checkpinos[]){
         system("PAUSE");
     }
     else{
-        //verificar se está pegando do arquivo binario
-        // l é outra struct que vai receber minha estrutura gravada no arquivo e implimila
+        //verificar se estï¿½ pegando do arquivo binario
+        // l ï¿½ outra struct que vai receber minha estrutura gravada no arquivo e implimila
         // antes l era &letra
         fread(&l, sizeof(struct letra), 40, arquivo);
         int i=0,j=0,res=0; char ret = NULL;
