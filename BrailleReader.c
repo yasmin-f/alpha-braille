@@ -7,8 +7,10 @@
 #include "banco_letras.h"
 
 #define MAXP 7
+#define MAXMODES 2
 
 int const MainButton = 7;
+int const ModeSelect = 8;
 
 void inicializar ()
 {
@@ -19,7 +21,7 @@ void inicializar ()
     inicializa_letras();
     file_write();
     
-    //configurando entrada e saida pinos
+    //configurando pinos de entrada e saida 
     for (i = 1; i <= 7; i++) {
         pinMode(i, INPUT);
         pullUpDnControl(i, PUD_UP);
@@ -87,7 +89,7 @@ void ModoLivre ()
 
 void ModoAtividade()
 {
-    int i, checkpinos[MAXP] = {0}; //{0,1,0,0,0,0,0}
+    int i, j, checkpinos[MAXP] = {0}; //{0,1,0,0,0,0,0}
     char randletra, ret = ' ';
 
     //Randomiza letra
@@ -101,21 +103,23 @@ void ModoAtividade()
     {
         if (digitalRead(MainButton) == LOW)
         {
-            checarpinos(checkpinos);
-            ret = buscaLetra(checkpinos);
-            for (i = 1; i <= 6; i++)
-                printf("pino %d: %d\n", i, checkpinos[i]);
-            if (randletra == ret)
-            {
-                printf("\nLetra encontrada: %c\n", ret);
-                printf("Voce acertou\n\n");
-                ExecutarAudio(ret);
-                delay(1000);
+            for (i = 0; i < 3; i++) {
+                checarpinos(checkpinos);
+                ret = buscaLetra(checkpinos);
+                for (j = 0; j < 6; j++)
+                    printf("pino %d: %d\n", j, checkpinos[j]);
+                if (randletra == ret)
+                {
+                    printf("\nLetra encontrada: %c\n", ret);
+                    printf("Voce acertou\n\n");
+                    ExecutarAudio(ret);
+                    delay(1000);
+                    break;
+                }
+                else
+                    printf("\nLetra encontrada: %c\n", ret);
+                    printf("Voce errou a letra!!\n\n");
             }
-            else
-                printf("\nLetra encontrada: %c\n", ret);
-                printf("Voce errou a letra!!\n\n");
-
             randletra = rand() % 26 + 97;
             printf("\nColoque os pinos correspondentes a letra: %c\n\n", randletra);
             ExecutarAudio(randletra);
@@ -127,35 +131,16 @@ void ModoAtividade()
 int main()
 {
     int checkpinos [MAXP];
+    int modenum = 0;
 
     srand (time(NULL));
 
     inicializar ();
-    ModoLivre (checkpinos);
-    ModoAtividade (checkpinos);
-    
+    while (true) {
+        if (digitalRead (ModeSelect) == LOW) ((modenum++) % MAXMODES);
+        
+        if (modenum == 0) ModoLivre (checkpinos);
+        if (modenum == 1) ModoAtividade (checkpinos);
+    }
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

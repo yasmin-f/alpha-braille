@@ -10,7 +10,7 @@
 typedef struct {
    int pino[7];
    char letra;
-} LETRA
+} LETRAS
 
 typedef struct {
    int pino[7];
@@ -61,7 +61,7 @@ void inicializa_letras()
                        {0,1,1,1,1,1},
                        {1,1,0,0,1,1}};
 
-    LETRA alfabeto [40];
+    LETRAS alfabeto [40];
     for (i = 0; i < 26; i++) {
         for (j = 0; j < 6; j++) {
             alfabeto[i].pino[j] = aux[i][j];
@@ -83,14 +83,14 @@ void inicializa_letras()
     //A com crase {1,1,0,1,0,1}
     alfabeto[29].letra='à';
 
-    //� {0,0,1,1,1,0}
-    alfabeto[30].letra='�';
+    //( {0,0,1,1,1,0}
+    alfabeto[30].letra=')';
 
-    //� {1,1,1,1,1,1}
-    alfabeto[31].letra='�';
+    //e com agudo {1,1,1,1,1,1}
+    alfabeto[31].letra='é';
 
-    //� {1,1,0,0,0,1}
-    alfabeto[32].letra='�';
+    //e com circunflexo {1,1,0,0,0,1}
+    alfabeto[32].letra='ê';
 
     //i com agudo {0,0,1,1,0,0}
     alfabeto[33].letra='í';
@@ -114,13 +114,13 @@ void inicializa_letras()
     alfabeto[39].letra='�';
 
 }
-void file_write(){
+void file_write() {
     // Arquivo
     // gravando no arquivo
     int gravado; 
     FILE *arquivo;
 
-    arquivo = fopen ("alfabeto.txt", "wb");//wb - arquibo binario
+    arquivo = fopen ("alfabeto.txt", "wb");//wb - arquivo binario
     if (arquivo == NULL) {
         printf ("\nArquivo alfabeto.txt n�o pode ser aberto.\n");
         system ("PAUSE");
