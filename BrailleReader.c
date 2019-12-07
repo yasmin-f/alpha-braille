@@ -14,8 +14,8 @@
 #define MAXR 2
 #define MAXALF 26
 
-int const MainButton = 6;
-int const ModeSelect = 7;
+int const MainButton = 7;
+int const ModeSelect = 6;
 
 typedef struct {
    int pino[MAXP];
@@ -170,6 +170,10 @@ int ModoLivre (LETRAS alfabeto [])
                 ExecutarAudio (ret);
                 delay (200);
             }
+<<<<<<< HEAD
+=======
+            delay(300);
+>>>>>>> 62846d68c9b4e1770128d5c9d101002f92aaf2d3
         }
     }
     return 1;
