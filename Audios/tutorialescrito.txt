@@ -1,0 +1,23 @@
+Antes de fazer alguma atividade você prescisa saber o que é uma célula braile.
+A célula braile. é composta de seis pontos, definidos a partir de uma matriz de duas colunas e três linhas,
+Cada ponto da célula recebe um número de identificação de um a seis, iniciando no primeiro ponto superior à esquerda, e terminando no último ponto inferior à direita, no sentido vertical.
+ 
+O dispositivo começa no modo livre,
+O modo livre é para você se divertir! formando letras do alfabeto em português.
+Para isso. você pode encaixar os pinos nos buracos na célula braile.ao lado.
+Para confirmar aperte o botao grande.
+Se você formou uma letra existente no alfabeto, você ouvirá uma mensagem de sucesso, se não, uma de erro.
+Para trocar de opção, em qualquer momento, aperte o botão pequeno, e uma mensagem de encerramento será ouvida.
+
+O modo atividade é para desafiar você! nele você receberá uma letra aleatória do alfabeto em português, e tentará configurar na célula braile.ao lado, a letra atribuida,
+
+Para confirmar aperte o botao grande.
+Se acertar, uma mensagem de sucesso será ouvida, se não, uma de erro.
+
+Para sair do modo tutorial aperte o botão pequeno.
+
+
+ 
+
+
+
