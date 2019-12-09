@@ -239,6 +239,26 @@ void ModoAtividade (LETRAS alfabeto[])
     }
 }
 
+int ModoTutorial ()
+{
+    ExecutarAudio("bemvindo");
+    delay (1000);
+    ExecutarAudio("desejatutorial");
+    delay (2000);
+    ExecutarAudio("botaogrande");
+    delay (2000);
+    ExecutarAudio("botaopequeno");
+    delay (2000);
+    if (digitalRead (ModeSelect) == LOW) return 0;
+    if (digitalRead (MainButton) == LOW) {
+        ExecutarAudio("modotutorial");
+        delay (1500);
+        ExecutarAudio("tutorialescrito");
+        delay (82000);
+        return 1;
+    }
+}
+
 int main()
 {
     int modenum = 0;
@@ -248,6 +268,8 @@ int main()
     srand (time (NULL));
     inicializar (alfabeto);
     
+    ModoTutorial ();
+
     while (TRUE) {
         modenum = (modenum % 2);
         printf ("%d\n", modenum);
