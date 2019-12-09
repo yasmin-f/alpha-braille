@@ -22,8 +22,7 @@ typedef struct {
    char letra;
 } LETRAS;
 
-char buscaLetra (int checkpinos [], LETRAS alfabeto [])
-{
+char buscaLetra (int checkpinos [], LETRAS alfabeto []) {
     int res, i, j;
 
     for(i = 0; i < MAXALF; i++) {
@@ -157,17 +156,16 @@ int ModoLivre (LETRAS alfabeto [])
         if(digitalRead (MainButton) == LOW) {
             checarpinos (checkpinos);
             ret[0] = buscaLetra (checkpinos, alfabeto);
-
             for (i = 0; i < 6; i++)
                 printf ("pino %d: %d\n", i, checkpinos[i]);
 
-            if (!ret[0]) {
+            if (!ret[0]){
                 ///printf ("\n\nErro ao buscar letra na biblioteca!!");
                 //ExecutarAudio ("errobuscaletra");
                 ExecutarAudio("letranaoexiste");
                 delay (2000);
-            }
-            else {
+
+            }else {
                 printf ("\nLetra encontrada: %c\n\n", ret[0]);
                 ExecutarAudio (ret);
                 delay (200);
@@ -199,13 +197,15 @@ void ModoAtividade (LETRAS alfabeto[])
     delay(200);
 
     ///ativa todos os pinos, somente enquanto o botao principal estiver sendo pressionado
-    while (TRUE) {
+    while (TRUE)
+    {
         if (digitalRead (ModeSelect) == LOW) {
             ExecutarAudio("encerrandoatividade");
             delay (2000);
             break;
         }
-        if (digitalRead(MainButton) == LOW) {
+        if (digitalRead(MainButton) == LOW)
+        {
             checarpinos (checkpinos);
             ret = buscaLetra(checkpinos, alfabeto);
 
@@ -237,16 +237,16 @@ void ModoAtividade (LETRAS alfabeto[])
 
 int ModoTutorial ()
 {
-    printf ("\n\nModo Tutorial\n\n");
+    delay (3000);
     ExecutarAudio("bemvindo");
     delay (1000);
     ExecutarAudio("desejatutorial");
-    delay (2000);
+    delay (3000);
     ExecutarAudio("botaogrande");
     delay (2000);
     ExecutarAudio("botaopequeno");
     delay (2000);
-    while (TRUE){
+    while (TRUE) {
         if (digitalRead (ModeSelect) == LOW) return 0;
         if (digitalRead (MainButton) == LOW) {
             ExecutarAudio("modotutorial");
