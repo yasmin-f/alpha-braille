@@ -14,8 +14,8 @@
 #define MAXR 2
 #define MAXALF 26
 
-int const MainButton = 7;
-int const ModeSelect = 6;
+int const MainButton = 6;
+int const ModeSelect = 7;
 
 typedef struct {
    int pino[MAXP];
