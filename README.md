@@ -22,4 +22,4 @@ aluno, podendo praticar sozinho em casa sem a dependência de um professor.
 
 ### Lincença
 
-[LGPL 3.0](https://github.com/yasmin-f/alpha-braille/blob/master/License.md]
+[LGPL 3.0](https://github.com/yasmin-f/alpha-braille/blob/master/License.md)
